@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">TRANSFORMADA DE LAPLACE</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Transformada de Laplace</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GSPIaPQUmUU?si=6VWfl2aQ1LCmu46W"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>.</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/QqLVPgIO6co?si=CQQj1WmmT126h9Pl"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>.</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/h5-H90qhp2k?si=GMSJAzgCZmC0YFjr"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>.</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/egoCdz9r5xs?si=ThvPl5W4F5hZ0INn"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="cursos">
+            <h3>Transformada de Laplace</h3>
+            <div class="temas">
+                <a href="Transformada de Laplace/Transformada de Laplace (Parte 01).pdf">Transformada de Laplace (Parte
+                    01)</a>
+                <a href="Transformada de Laplace/Transformada de Laplace (Parte 02).pdf">Transformada de Laplace (Parte
+                    02)</a>
+                <a href="Transformada de Laplace/Transformada de Laplace (Parte 03).pdf">Transformada de Laplace (Parte
+                    03)</a>
+                <a href="Transformada de Laplace/Transformada de Laplace (Parte 04).pdf">Transformada de Laplace (Parte
+                    04)</a>
+                <a href="Transformada de Laplace/Función Delta de Dirac (Laplace).pdf"></a>
+                <a href="Transformada de Laplace/Ejercicios de Repaso.pdf">Ejercicios de Repaso</a>
+                <a href="Transformada de Laplace/Ejercicios de la Unidad.pdf">Ejercicios de la Unidad</a>
+                <a href="Transformada de Laplace/Función delta diracc y fórmulas matemáticas.pdf">Función delta diracc y
+                    fórmulas matemáticas</a>
+                <a href="Transformada de Laplace/Tabla de Transformada de Laplace.pdf">Tabla de Transformada de
+                    Laplace</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Transformada de Laplace (Parte 01).pdf">Transformada de Laplace (Parte 01)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Transformada de Laplace (Parte 02).pdf">Transformada de Laplace (Parte 02)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Transformada de Laplace (Parte 03).pdf">Transformada de Laplace (Parte 03)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Transformada de Laplace (Parte 04).pdf">Transformada de Laplace (Parte 04)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Función Delta de Dirac (Laplace).pdf">Función Delta de Dirac (Laplace)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Ejercicios de Repaso.pdf">Ejercicios de Repaso</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Ejercicios de la Unidad.pdf">Ejercicios de la Unidad</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Función delta diracc y fórmulas matemáticas.pdf">Función delta diracc y fórmulas matemáticas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace/Tabla de Transformada de Laplace.pdf">Tabla de Transformada de Laplace</a>' +
+                        '</div>';
+
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,567 @@
+/* Reset and Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #333;
+    padding: 20px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 889;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lavanderia {
+    font-size: 36px;
+    font-family: cursive, sans-serif;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Estilos del icono de menú con animación constante */
+.menu-icono {
+    display: none;
+    /* Cambiado a inline-block para que pueda rotar */
+    cursor: pointer;
+    animation: girar 2s linear infinite;
+    /* Animación de rotación continua */
+}
+
+/* Column Section */
+.column-section {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+/*1234567890'¿*/
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-2 {
+    font-size: 25px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    color: #0d0d0d;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-2:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.column h2 {
+    color: #0d0d0d;
+    font-size: 30px;
+}
+
+.column p {
+    font-style: italic;
+    font-weight: lighter;
+    /* Puedes también usar un número menor a 'normal', como 300 */
+    color: #0d0d0d;
+    font-size: 20px;
+}
+
+/* Logo and Social Media Section */
+.logo-redes-section {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-redes-section h4 {
+    color: #0d0d0d;
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.whatsapp-icon img {
+    width: 30px;
+}
+
+.whatsapp-icon:hover {
+    background-color: #3498db;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 500;
+}
+
+.logo-2 {
+    width: 150px;
+}
+
+.socials-1 {
+    display: flex;
+    gap: 10px;
+}
+
+.social-1 {
+    background-color: #3498db;
+    border-radius: 50%;
+    padding: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.social-1:hover {
+    background-color: #333;
+}
+
+.social-1 img {
+    width: 30px;
+    height: 30px;
+}
+
+
+/* Estilos iniciales para los enlaces sociales */
+.social-1 img path {
+    fill: #00ff00;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+
+}
+
+.nav-links a {
+    font-family: "Poppins", sans-serif;
+
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffcc00;
+}
+
+.links h4 {
+    font-size: 30px;
+}
+
+/*1234567890*/
+#opciones-servicios-corporativos {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 10px 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 998;
+    /* Asegura que el contenedor esté en la parte superior */
+    position: fixed;
+    opacity: 0;
+    /* Inicialmente oculto */
+    pointer-events: none;
+    /* No interactuable mientras está oculto */
+    transition: opacity 0.3s ease-in-out;
+    /* Agregar una transición suave de opacidad */
+}
+
+#opciones-servicios-corporativos.visible {
+    opacity: 1;
+    /* Mostrar con opacidad completa */
+    pointer-events: auto;
+    /* Habilitar la interacción cuando está visible */
+}
+
+#opciones-servicios-corporativos ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+#opciones-servicios-corporativos li {
+    margin-bottom: 10px;
+}
+
+#opciones-servicios-corporativos a {
+    text-decoration: none;
+    color: #3498db;
+    text-align: center;
+    font-size: 25px;
+}
+
+#opciones-servicios-corporativos a:hover {
+    text-align: center;
+    color: #333;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-container p {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    /* Tamaño del texto escalado de forma fluida */
+    margin: 0;
+    width: 70%;
+    /* Ajusta según tu preferencia */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Centra horizontalmente usando transform */
+}
+
+.content-container {
+    max-width: 100%;
+    margin: 2em auto;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.section {
+    flex: 1 1 calc(33.33% - 2em);
+    /* 2em de espacio entre secciones */
+    max-width: calc(33.33% - 2em);
+    /* Para que cada sección tenga un máximo de 33.33% de la pantalla */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.section:hover {
+    transform: scale(1.05);
+}
+
+.section h2 {
+    margin: 0;
+    padding: 0.8em;
+    font-weight: lighter;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+.section p {
+    padding: 1em;
+    color: #666;
+}
+
+
+.quote-container {
+    text-align: center;
+    background-color: #ffffff;
+    font-family: cursive;
+    color: #3498db;
+    padding: 20px;
+    position: relative;
+    animation: fadeInColorChange 5s ease-in-out infinite alternate;
+    /* Ajusta la duración y la función de temporización según sea necesario */
+}
+
+.quote-container p {
+    padding: 10px 0;
+    margin: 0;
+    font-size: 50px;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.color01 {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 20px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.color01 img {
+    max-width: 400px;
+    height: 300px;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+/* Añadimos un estilo para que el texto esté en el lado derecho */
+.color01 .text-container {
+    flex: 1;
+}
+
+
+.feature-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.color02 {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+    /* Agregamos transición para un efecto suave al hacer hover */
+}
+
+.color02:hover {
+    transform: scale(1.05);
+    /* Cambiamos la escala al hacer hover */
+}
+
+@media screen and (max-width: 768px) {
+    .btn-2 {
+        font-size: 15px;
+    }
+
+    .image-container {
+        height: 40vh;
+    }
+
+    .color02 {
+        padding: 10px;
+    }
+
+    .color02:hover {
+        transform: none;
+        /* Cambiamos la escala al hacer hover */
+    }
+
+    .color02 h2 {
+        font-size: 15px;
+    }
+
+    .color02 p {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 13px;
+    }
+
+    .feature-section {
+        margin: 10px;
+        gap: 5px;
+        grid-template-columns: 1fr;
+        /* Cambiamos a una sola columna en pantallas más pequeñas */
+    }
+
+    .main-section {
+        padding: 0px 0px;
+        width: 100%;
+    }
+
+    .column-section {
+        padding: 0px 30px;
+        flex-direction: column;
+        align-items: right;
+    }
+
+    .column h2 {
+        font-size: 20px;
+    }
+
+    .column p {
+        font-style: italic;
+        font-weight: lighter;
+        /* Puedes también usar un número menor a 'normal', como 300 */
+        font-size: 15px;
+    }
+
+    .color01 {
+        margin: 10px;
+        padding: 5px 0px;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        /* Cambiar la dirección del flex a columna en pantallas pequeñas */
+        align-items: center;
+        text-align: center;
+        /* Centrar el texto en pantallas pequeñas */
+    }
+
+    .color01 img {
+        max-width: 200px;
+        /* Ocupar el 100% del ancho del contenedor en pantallas pequeñas */
+        height: 150px;
+        border-radius: 8px;
+        margin-bottom: 0px;
+        /* Añadir espacio entre la imagen y el texto */
+    }
+
+    .color01 .text-container {
+        flex: 1;
+        text-align: none;
+        /* Alinear el texto a la izquierda en pantallas más grandes */
+        margin-right: 0;
+        margin-left: 0;
+        /* Eliminar el margen derecho en pantallas pequeñas */
+    }
+
+    .color01 h2 {
+        font-size: 15px;
+    }
+
+    .color01 p {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size: 13px;
+    }
+
+    .section {
+        margin-top: 0px;
+        flex: 1 1 calc(100% - 2em);
+        max-width: calc(100% - 2em);
+        margin-bottom: 0em;
+        /* Reduzco el espacio entre secciones para dispositivos móviles */
+        box-sizing: border-box;
+        /* Ajuste para incluir el borde en el cálculo del tamaño */
+    }
+
+    .section h2 {
+        font-weight: lighter;
+
+        font-size: 0.9em;
+        /* Ajusta el tamaño del encabezado para dispositivos móviles */
+        margin-bottom: 0.4em;
+        /* Reduzco el espacio entre el encabezado y el párrafo */
+    }
+
+    .section p {
+        padding: 2px 2px;
+        font-size: 0.9em;
+        /* Ajusta el tamaño del párrafo para dispositivos móviles */
+    }
+
+    .content-container {
+        gap: 0em;
+        /* Reduzco el espacio entre secciones en la columna */
+    }
+
+    .quote-container {
+        margin-top: 10px;
+        padding: 0px 0px;
+    }
+
+    .quote-container p {
+        font-size: 25px;
+        padding: 0px 0px;
+    }
+
+    .footer {
+        padding: 0px 0px;
+    }
+
+    #opciones-servicios-corporativos {
+        padding: 5px 20px;
+    }
+
+    #opciones-servicios-corporativos a {
+        font-size: 20px;
+    }
+
+    .logo-redes-section {
+        padding: 0px 0px;
+        margin-top: 0px;
+    }
+
+    .logo-2 {
+        width: 100px;
+    }
+
+
+    .links h4 {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        padding: 10px 0px;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        width: 50%;
+        top: 75px;
+        right: 0;
+        /* Cambiado de left: 0 a right: 0 */
+        background-color: rgba(17, 17, 17, 0.9);
+        z-index: 891;
+        text-align: center;
+    }
+
+
+    .nav-links.show {
+        display: flex;
+        z-index: 892;
+    }
+
+    .menu-icono {
+        display: block;
+
+        z-index: 2;
+    }
+
+    header {
+        padding: 5px 0;
+    }
+
+    .lavanderia {
+        font-size: 18px;
+    }
+}

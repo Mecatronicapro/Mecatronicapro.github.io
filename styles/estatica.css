@@ -1,0 +1,332 @@
+/* Reset and Global Styles */
+body {
+  margin: 0;
+  background-color: #1f2a38;
+  padding: 0;
+  font-family: Geneva, sans-serif;
+  letter-spacing: 1px; /* Aquí puedes ajustar el valor según lo necesites */
+    /* Definir el tipo de letra */
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: #1f2a38;
+  padding: 10px 40px;
+  text-align: center;
+  position: sticky;
+  z-index: 990; /* Asegura que el encabezado esté encima del contenido */
+
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-icono {
+  display: none;
+}
+
+.lavanderia {
+  font-size: 30px;
+  color: #ffffff;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff4081;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.nav-links a:hover {
+  color: #ff4081;
+  transform: translateY(-3px) rotateX(5deg);
+}
+
+#servicios-corporativos {
+  display: none;
+}
+
+/* Estilo del contenedor de opciones de servicios corporativos */
+#opciones-servicios-corporativos {
+  background-color: none;
+  /* Color de fondo transparente */
+  padding: 10px 0px;
+  z-index: 998;
+  /* Asegura que el contenedor esté en la parte superior */
+  position: fixed;
+  opacity: 0;
+  /* Inicialmente oculto */
+  pointer-events: none;
+  /* No interactuable mientras está oculto */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Estilo del contenedor visible */
+#opciones-servicios-corporativos.visible {
+  opacity: 1;
+  /* Mostrar con opacidad completa */
+  pointer-events: auto;
+  /* Habilitar la interacción cuando está visible */
+}
+
+/* Estilo de la lista de opciones */
+#opciones-servicios-corporativos ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo de cada elemento de la lista */
+#opciones-servicios-corporativos li {
+  margin-bottom: 5px;
+}
+
+/* Estilo del enlace dentro de la lista */
+#opciones-servicios-corporativos a {
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+}
+
+
+/* Estilo de cada curso */
+.curso {
+  margin-bottom: 6px;
+  /* Espaciado entre cursos */
+  padding: 10px;
+  /* Espaciado interno */
+  /* Borde del curso */
+  border-radius: 5px;
+  /* Bordes redondeados */
+  background-color: #2f435c;
+  /* Color de fondo */
+  overflow: hidden;
+  /* Ocultar el contenido que se desborda */
+}
+
+/* Estilo del enlace dentro de cada curso */
+.curso a {
+  text-decoration: none;
+  /* Sin subrayado en los enlaces */
+  /* Color del texto del enlace */
+  display: block;
+  /* Mostrar el enlace como bloque */
+}
+
+/* Animación de revelar texto al hacer hover */
+.curso:hover a {
+  animation: revealText 0.5s forwards;
+  /* Aplicar la animación de revelar texto */
+}
+
+/* Animación de revelar texto */
+@keyframes revealText {
+  from {
+    opacity: 0;
+    /* Empezar con opacidad 0 */
+    transform: translateX(-100%);
+    /* Desplazar completamente hacia la izquierda */
+  }
+
+  to {
+    opacity: 1;
+    color: #ff4081;
+    /* Terminar con opacidad 1 */
+    transform: translateX(0);
+    /* No desplazar, posición original */
+  }
+}
+
+.contenido_de_los_cursos {
+  display: flex;
+  justify-content: space-between;
+  /* Distribuye los elementos alrededor del centro */
+  align-items: flex-start;
+  /* Alinea los elementos en la parte superior */
+}
+
+.videos {
+  padding: 0px 0px 0px 40px;
+  width: 70%;
+  margin-bottom: 10px;
+  /* Ancho del contenedor de videos */
+}
+.videos h4 {
+  font-size: 18px;
+  font-weight: 200; /* Valor para hacer la letra más delgada */
+  color: #ff4081;
+}
+.videos p {
+  font-size: 14px;
+  font-weight: 200; /* Valor para hacer la letra más delgada */
+  color: #fff;
+}
+
+.cursos {
+  position: sticky;
+  top: 60px; /* Altura del encabezado + padding superior */
+  padding: 0px 20px;
+  width: 25%;
+  text-align: left;
+}
+.cursos h3{
+  text-align: center;
+  font-size: 20px;
+  color: #00c5cd;
+}
+
+.temas a {
+  display: block;
+  color: #ffffff;
+  /* Para mantener el texto en color negro */
+  margin-bottom: 0px;
+  border-top: 3px solid #3e5a7c;
+  text-decoration: none; /* Para quitar el subrayado de los enlaces */
+
+  /* Borde de 2px de ancho y color rojo (#ff0000) */
+  /* Espaciado entre cursos */
+  padding: 5px;
+  background-color: none;
+}
+.temas a:hover {
+  background-color: #ff4081;
+}
+/* Estilos para hacer el video responsive */
+.video-responsive {
+  overflow: hidden;
+  position: relative;
+  padding-top: 50%;
+  /* Proporción 16:9 */
+}
+
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+@media screen and (max-width: 768px) {
+  
+  .temas a {
+    display: none;
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    /* Para quitar el subrayado de los enlaces */
+    color: black;
+    /* Para mantener el texto en color negro */
+  }
+
+  .videos {
+    padding: 0px 10px;
+    width: 100%;
+    /* Ancho del contenedor de videos */
+  }
+  .videos h4 {
+    font-size: 15px;
+  
+  }
+  .videos p {
+    font-size: 12px;
+  
+  }
+
+  .cursos {
+    z-index: 999; /* Asegura que el encabezado esté encima del contenido */
+    width: 0%;
+    /* Ancho del contenedor de cursos */
+    text-align: none;
+    /* Alinea el texto a la izquierda dentro del contenedor de cursos */
+    display: none;
+
+  }
+
+  .curso {
+    margin-bottom: 0px;
+    background-color: #1f2a38;
+    border-top: 3px solid #3e5a7c;
+    /* Borde de 2px de ancho y color rojo (#ff0000) */
+    /* Espaciado entre cursos */
+    padding: 5px;
+    background-color: none;
+  }
+
+  #opciones-servicios-corporativos {
+    width: 100%;
+    padding: 5px 0px;
+  }
+
+  #servicios-corporativos {
+    display: block;
+  }
+
+  .nav-links {
+    padding: 15px 0px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: 35px;
+    right: 0;
+    background-color: #2f435c;
+    z-index: 891;
+    text-align: center;
+  }
+
+  .nav-links.show {
+    display: flex;
+    z-index: 892;
+  }
+
+  .menu-icono {
+    display: block;
+    z-index: 2;
+  }
+
+  header {
+    padding: 5px 0;
+  }
+
+  .lavanderia {
+    padding: 0px 10px;
+    font-size: 25px;
+  }
+}

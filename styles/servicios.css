@@ -1,0 +1,176 @@
+/* Reset and Global Styles */
+body {
+  margin: 0;
+  background-color: #1f2a38;
+  padding: 0;
+} 
+
+/* Video Background */
+
+/* Header and Navigation */
+header {
+  padding: 20px 40px;
+  text-align: center;
+  position: relative;
+  z-index: 889;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilos del icono de menú con animación constante */
+.menu-icono {
+  display: none;
+  /* Cambiado a inline-block para que pueda rotar */
+}
+
+.lavanderia {
+  font-size: 30px; /* Tamaño de fuente */
+  color: #ffffff; /* Color del texto blanco */
+  /* Utilizar gradientes en lugar de sombras */
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Añadir transición suave para el efecto */
+  transition: background 0.3s ease;
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+
+}
+
+.nav-links a {
+  font-family: "Montserrat", sans-serif; /* Cambiar la fuente a Montserrat */
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  /* Añadir transición para el color y la transformación */
+  transition: color 0.3s ease, transform 0.2s ease;
+  /* Agregar efecto de subrayado */
+  position: relative;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff4081;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.nav-links a:hover {
+  color: #ff4081; /* Cambiar color al hacer hover */
+  transform: translateY(-3px) rotateX(5deg); /* Levantar ligeramente el enlace */
+}
+
+/*1234567890*/
+#opciones-servicios-corporativos {
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 10px 40px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 998;
+  /* Asegura que el contenedor esté en la parte superior */
+  position: fixed;
+  opacity: 0;
+  /* Inicialmente oculto */
+  pointer-events: none;
+  /* No interactuable mientras está oculto */
+  transition: opacity 0.3s ease-in-out;
+  /* Agregar una transición suave de opacidad */
+}
+
+#opciones-servicios-corporativos.visible {
+  opacity: 1;
+  /* Mostrar con opacidad completa */
+  pointer-events: auto;
+  /* Habilitar la interacción cuando está visible */
+}
+
+#opciones-servicios-corporativos ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+}
+
+#opciones-servicios-corporativos li {
+  margin-bottom: 10px;
+}
+
+#opciones-servicios-corporativos a {
+  text-decoration: none;
+  color: #3498db;
+  text-align: center;
+  font-size: 25px;
+}
+
+#opciones-servicios-corporativos a:hover {
+  text-align: center;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+
+  #opciones-servicios-corporativos {
+    padding: 5px 20px;
+  }
+
+  #opciones-servicios-corporativos a {
+    font-size: 20px;
+  }
+
+
+  .nav-links {
+    padding: 15px 0px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 50%;
+    top: 75px;
+    right: 0;
+    /* Cambiado de left: 0 a right: 0 */
+    background-color: rgba(17, 17, 17, 0.9);
+    z-index: 891;
+    text-align: center;
+  }
+
+
+  .nav-links.show {
+    display: flex;
+    z-index: 892;
+  }
+
+  .menu-icono {
+    display: block;
+
+    z-index: 2;
+  }
+
+  header {
+    padding: 5px 0;
+  }
+
+  .lavanderia {
+    padding: 0px 10px;
+    font-size: 25px;
+  }
+
+}
