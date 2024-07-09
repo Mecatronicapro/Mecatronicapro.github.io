@@ -1,0 +1,355 @@
+/* Reset and Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+/* Header and Navigation */
+header {
+  background-color: #333;
+  padding: 20px 40px;
+  text-align: center;
+  position: relative;
+  z-index: 889;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lavanderia {
+  font-size: 36px;
+  font-family: cursive, sans-serif;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Estilos del icono de menú con animación constante */
+.menu-icono {
+  display: none;
+  /* Cambiado a inline-block para que pueda rotar */
+  cursor: pointer;
+  animation: girar 2s linear infinite;
+  /* Animación de rotación continua */
+}
+
+/* Column Section */
+.column-section {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.column h2{
+  color: #0d0d0d;
+  font-size: 30px;
+}
+.column p {
+  font-style: italic;
+  font-weight: lighter; /* Puedes también usar un número menor a 'normal', como 300 */
+  color: #0d0d0d;
+  font-size: 20px;
+}
+
+/* Logo and Social Media Section */
+.logo-redes-section {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-redes-section h4 {
+  color: #0d0d0d;
+}
+
+/* WhatsApp Icon */
+.whatsapp-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.whatsapp-icon img {
+  width: 30px;
+}
+
+.whatsapp-icon:hover {
+  background-color: #3498db;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 500;
+}
+
+.logo-2 {
+  width: 150px;
+}
+
+.socials-1 {
+  display: flex;
+  gap: 10px; 
+}
+
+.social-1 {
+  background-color: #3498db;
+  border-radius: 50%;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.social-1:hover {
+  background-color: #333;
+}
+
+.social-1 img {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* Estilos iniciales para los enlaces sociales */
+.social-1 img path {
+  fill: #00ff00;
+}
+
+
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+
+}
+
+.nav-links a {
+  font-family: "Poppins", sans-serif;
+
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffcc00;
+}
+
+.ubicacion-contacto {
+  margin-top: 30px;
+}
+
+/* Estilos generales para la sección */
+.ubicacion-contacto.container {
+  padding: 0px 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Estilos para la ubicación */
+.ubicacion {
+  width: 50%;
+  /* Ajusta el ancho según tus necesidades */
+}
+
+.map {
+  width: 100%;
+}
+
+/* Estilos para los contactos */
+.contacto {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px 0px;
+  width: 46%;
+  /* Ajusta el ancho según tus necesidades */
+}
+
+.lavander {
+  padding: 0 30px;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.contacto p {
+  padding: 0 30px;
+  font-size: 20px;
+  color: #ffffff;
+  font-family: cursive, sans-serif;
+  font-style: italic;
+}
+
+.contacto h2 {
+  padding: 0 30px;
+  margin-top: 15px;
+  font-size: 40px;
+  color: #3498db;
+}
+.links h4 {
+  font-size: 30px;
+}
+/*1234567890*/
+#opciones-servicios-corporativos {
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 10px 40px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 998; /* Asegura que el contenedor esté en la parte superior */
+  position: fixed;
+  opacity: 0; /* Inicialmente oculto */
+  pointer-events: none; /* No interactuable mientras está oculto */
+  transition: opacity 0.3s ease-in-out; /* Agregar una transición suave de opacidad */
+}
+
+#opciones-servicios-corporativos.visible {
+  opacity: 1; /* Mostrar con opacidad completa */
+  pointer-events: auto; /* Habilitar la interacción cuando está visible */
+}
+
+#opciones-servicios-corporativos ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  
+}
+
+#opciones-servicios-corporativos li {
+  margin-bottom: 10px;
+}
+
+#opciones-servicios-corporativos a {
+  text-decoration: none;
+  color: #3498db;
+  text-align: center;
+  font-size: 25px;
+}
+
+#opciones-servicios-corporativos a:hover {
+  text-align: center;
+  color: #333;
+}
+
+@media screen and (max-width: 768px) {
+  #opciones-servicios-corporativos {
+    padding: 5px 20px;
+  }
+  #opciones-servicios-corporativos a {
+    font-size: 20px;
+  }
+
+  .logo-redes-section {
+    margin-top: 10px;
+    padding: 0px 0px;
+  }
+
+  .ubicacion-contacto.container {
+    margin-top: 0px;
+    padding: 0px 0px;
+  }
+
+  .ubicacion {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 50%;
+    /* Ajusta el ancho según tus necesidades */
+  }
+
+  .map {
+    width: 100%;
+    height: 200px;
+  }
+
+  .lavander {
+    margin-top: 0px;
+    padding: 0 5px;
+    font-size: 25px;
+    color: #ffffff;
+  }
+
+  .contacto p {
+    margin-top: 0px;
+    padding: 0 10px;
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  .contacto h2 {
+
+    padding: 0 5px;
+    margin-top: 0px;
+    font-size: 25px;
+    color: #3498db;
+  }
+
+
+  .logo-2 {
+    width: 100px;
+  }
+
+  .ubicacion,
+  .contacto {
+    width: 100%;
+    padding: 0p 0px;
+    margin-bottom: 0px;
+  }
+
+  .links h4 {
+    font-size: 20px;
+  }
+
+  .nav-links {
+    padding: 15px 0px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 50%;
+    top: 75px;
+    right: 0;
+    /* Cambiado de left: 0 a right: 0 */
+    background-color: rgba(17, 17, 17, 0.9);
+    z-index: 891;
+    text-align: center;
+  }
+
+
+  .nav-links.show {
+    display: flex;
+    z-index: 892;
+  }
+
+  .menu-icono {
+    display: block;
+
+    z-index: 2;
+  }
+
+  header {
+    padding: 5px 0;
+  }
+
+  .lavanderia {
+    font-size: 18px;
+  }
+}

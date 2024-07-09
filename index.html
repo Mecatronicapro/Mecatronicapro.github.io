@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Meca</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">Analiza, no te Mecanices</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a id="servicios-corporativos">CIENCIAS</a>
+                <a id="servicios">MECATRONICA</a>
+            </div>
+        </nav>
+    </header>
+    <img src="images/amor.png" height="100%" width="100%">
+    <script>
+        // Primer script JavaScript para el menú de servicios
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosLink = document.getElementById('servicios');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId; // Variable para almacenar el ID del temporizador
+
+            serviciosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId); // Cancelar el temporizador si el mouse está sobre el contenedor
+            });
+
+            serviciosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500); // Configurar un temporizador para cerrar el menú después de 500ms
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500); // Configurar un temporizador para cerrar el menú después de 500ms
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Electrónicos.html">Electrónicos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="PCBs.html">PCBs</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes.html">Redes Industriales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Control 01.html">Control 01</a>' +
+                        '</div>' +                        
+                        '<div class="curso">' +
+                        '<a href="sensores.html">Sensores</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica.html">Matematica Basica</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada Z.html">Transformada Z</a>' +
+                        '</div>' +                        
+                        '<div class="curso">' +
+                        '<a href="Transformada de Laplace.html">Transformada de Laplace</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Transformada de Fourier.html">Transformada de Fourier</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales.html">Señales y Sistemas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros.html">Resistencia de Materiales y Mecanica de Ingenieros</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

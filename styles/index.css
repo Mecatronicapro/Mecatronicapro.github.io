@@ -1,0 +1,515 @@
+body {
+  margin: 0;
+  background-color: #1f2a38;
+  padding: 0;
+  font-family: Geneva, sans-serif;
+  letter-spacing: 1px;
+  /* Aquí puedes ajustar el valor según lo necesites */
+  /* Definir el tipo de letra */
+}
+
+/* Header and Navigation */
+header {
+  position: sticky;
+  top: 0;
+  background-color: #1f2a38;
+  padding: 10px 40px;
+  text-align: center;
+  position: sticky;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-icono {
+  display: none;
+}
+
+.lavanderia {
+  font-size: 30px;
+  color: #ffffff;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.3s ease;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.nav-links a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #ff4081;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-links a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.nav-links a:hover {
+  color: #ff4081;
+  transform: translateY(-3px) rotateX(5deg);
+}
+
+/* Estilo del contenedor de opciones de servicios corporativos */
+#opciones-servicios-corporativos {
+  background-color: none;
+  /* Color de fondo transparente */
+  padding: 10px 0px;
+  z-index: 998;
+  /* Asegura que el contenedor esté en la parte superior */
+  position: fixed;
+  opacity: 0;
+  /* Inicialmente oculto */
+  pointer-events: none;
+  /* No interactuable mientras está oculto */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Estilo del contenedor visible */
+#opciones-servicios-corporativos.visible {
+  opacity: 1;
+  /* Mostrar con opacidad completa */
+  pointer-events: auto;
+  /* Habilitar la interacción cuando está visible */
+}
+
+/* Estilo de la lista de opciones */
+#opciones-servicios-corporativos ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo de cada elemento de la lista */
+#opciones-servicios-corporativos li {
+  margin-bottom: 5px;
+}
+
+/* Estilo del enlace dentro de la lista */
+#opciones-servicios-corporativos a {
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+}
+
+/*rftghjkl*/
+#opciones-servicios {
+  background-color: none;
+  /* Cambiado a transparente */
+  padding: 10px 0px;
+  z-index: 998;
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Estilo del contenedor visible */
+#opciones-servicios.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Estilo de la lista de opciones */
+#opciones-servicios ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo de cada elemento de la lista */
+#opciones-servicios li {
+  margin-bottom: 5px;
+}
+
+/* Estilo del enlace dentro de la lista */
+#opciones-servicios a {
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* Estilo de cada curso */
+.curso {
+  margin-bottom: 6px;
+  /* Espaciado entre cursos */
+  padding: 10px;
+  /* Espaciado interno */
+  background-color: #1f2a38;
+  border-top: 3px solid #3e5a7c;
+  /* Borde de 2px de ancho y color rojo (#ff0000) */
+  /* Espaciado entre cursos */
+  padding: 5px;
+  background-color: none;
+}
+
+/* Estilo del enlace dentro de cada curso */
+.curso a {
+  text-decoration: none;
+  /* Sin subrayado en los enlaces */
+  /* Color del texto del enlace */
+  display: block;
+  /* Mostrar el enlace como bloque */
+}
+
+/* Animación de revelar texto al hacer hover */
+.curso:hover a {
+  animation: revealText 0.5s forwards;
+  /* Aplicar la animación de revelar texto */
+}
+
+/* Animación de revelar texto */
+@keyframes revealText {
+  from {
+    opacity: 0;
+    /* Empezar con opacidad 0 */
+    transform: translateX(-100%);
+    /* Desplazar completamente hacia la izquierda */
+  }
+
+  to {
+    opacity: 1;
+    color: #ff4081;
+    /* Terminar con opacidad 1 */
+    transform: translateX(0);
+    /* No desplazar, posición original */
+  }
+}
+
+.image-container {
+  display: flex;
+  height: 75vh;
+}
+
+.image-container>div:first-child {
+  padding: 0px 0px 0px 40px;
+  flex: 25%;
+  display: flex;
+  flex-direction: column;
+  /* Ajusta el contenido en columna */
+  color: #ffffff;
+  justify-content: center;
+  text-align: left;
+  /* Alinea el texto horizontalmente */
+}
+
+.image-container>div:last-child {
+  flex: 70%;
+}
+
+.image-container>div:first-child h4 {
+  font-family: "Arial Narrow", sans-serif; /* Establecer la fuente Arial Narrow */
+  margin-bottom: 0px;
+  font-weight: 200;
+  font-size: 30px;
+  /* Reduce el margen inferior del h4 */
+}
+
+.image-container>div:first-child p {
+  line-height: 1.5;
+  /* Ajusta el espaciado entre líneas */
+  font-size: 14px;
+  /* Tamaño de fuente para el párrafo */
+  margin-bottom: 0px;
+  /* Reduce el margen inferior del h4 */
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nombre {
+  color: #00c5cd;
+  /* Tamaño de fuente deseado para el nombre */
+}
+
+.socials-1 {
+  margin-top: 5px;
+  padding: 0px 0px 0px 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.social-1 {
+  border: 2px solid #00c5cd;
+  border-radius: 50%;
+  padding: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.social-1:hover {
+  background-color: #00c5cd;
+}
+
+.social-1 img {
+  width: 25px;
+  height: 25px;
+}
+
+
+.sobre-mi {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sobre-mi img {
+  display: block;
+  max-width: 60%;
+  height: auto;
+  margin: 0 auto;
+  /* Centra horizontalmente la imagen */
+}
+
+.sobre-mi>div {
+  flex-direction: column;
+  /* Ajusta el contenido en columna */
+  color: #ffffff;
+  width: 50%;
+  /* Ajusta el ancho del div según sea necesario */
+  padding: 0 20px;
+  /* Agrega un poco de espacio alrededor del contenido */
+  display: flex;
+  justify-content: left;
+}
+
+.sobre-mi h4 {
+  margin-bottom: 0px;
+  font-size: 18px;
+}
+
+.sobre-mi p {
+  line-height: 1.5;
+  /* Ajusta el espaciado entre líneas */
+  font-size: 14px;
+  /* Tamaño de fuente para el párrafo */
+  margin-bottom: 0px;
+}
+
+.proyecto {
+  color: #ffffff;
+  width: 80%;
+  /* Ancho de la sección de proyectos */
+  margin: 0 auto;
+  /* Centrar la sección en la página */
+  display: flex;
+  /* Utilizar el modelo de caja flexible */
+  flex-wrap: wrap;
+  /* Permitir que los elementos fluyan a la siguiente línea */
+  justify-content: space-between;
+  /* Distribuir los elementos horizontalmente */
+}
+
+.proyecto .titulo {
+  text-align: center;
+  /* Centrar el texto */
+  font-size: 18px;
+  font-weight: 54px;
+  /* Puedes ajustar este valor según lo grueso que desees el texto */
+  width: 100%;
+  /* Ancho completo para el título */
+  margin-bottom: 20px;
+  /* Espacio entre el título y los proyectos */
+}
+
+.proyecto-individual {
+  width: calc(30% - 20px);
+  /* Ancho de cada proyecto (30% del ancho de la sección menos el margen) */
+  margin-bottom: 20px;
+  /* Espacio entre proyectos */
+}
+
+.proyecto-individual .titulo {
+  font-size: 14px;
+  /* Tamaño de fuente del título del proyecto */
+  margin-bottom: 10px;
+  /* Espacio entre el título y la imagen/descripción */
+}
+
+.proyecto-individual .imagen {
+  text-align: center;
+  /* Centrar la imagen */
+}
+
+.proyecto-individual .descripcion {
+  line-height: 1.5;
+  /* Ajusta el espaciado entre líneas */
+  font-size: 14px;
+  /* Tamaño de fuente para el párrafo */
+  margin-bottom: 0px;
+  /* Reduce el margen inferior del h4 */
+  text-align: justify;
+  /* Justificar el texto de la descripción */
+}
+
+@media screen and (max-width: 768px) {
+  .proyecto .titulo {
+    font-size: 16px;
+  }
+
+  .proyecto-individual .titulo {
+    font-size: 14px;
+
+  }
+
+  .proyecto-individual .descripcion {
+    font-size: 13px;
+  }
+
+  .proyecto-individual {
+    width: 100%;
+    /* Ancho completo en dispositivos móviles */
+  }
+
+  .sobre-mi {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    margin-bottom: 0px;
+  }
+
+  .sobre-mi>div {
+    width: 100%;
+    /* Ajusta el ancho del div según sea necesario */
+    padding: 0 0px;
+  }
+
+  .sobre-mi img {
+    display: block;
+    max-width: 50%;
+    height: auto;
+    margin: 0 auto;
+    /* Centra horizontalmente la imagen */
+  }
+
+  .sobre-mi h4 {
+    font-size: 14px;
+  }
+
+  .sobre-mi p {
+    font-size: 13px;
+  }
+
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .socials-1 {
+    margin-top: 5px;
+    justify-content: center;
+
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    gap: 20px;
+  }
+
+  .image-container>div:first-child {
+    padding: 0px 10px 0px 10px;
+    order: 2;
+    margin-top: 0px;
+    /* Cambia el orden visual para que aparezca después */
+    margin-bottom: 0px;
+    /* Espacio entre la imagen y el texto */
+  }
+
+  .image-container>div:first-child h4 {
+    margin-bottom: 0px;
+    font-size: 20px;
+    /* Reduce el margen inferior del h4 */
+  }
+
+  .image-container>div:first-child p {
+    font-size: 13px;
+    /* Tamaño de fuente para el párrafo */
+  }
+
+  .social-1 img {
+    width: 15px;
+    height: 15px;
+  }
+
+  .curso {
+    margin-bottom: 0px;
+    background-color: #1f2a38;
+    border-top: 3px solid #3e5a7c;
+    /* Borde de 2px de ancho y color rojo (#ff0000) */
+    /* Espaciado entre cursos */
+    padding: 5px;
+    background-color: none;
+  }
+
+  #opciones-servicios {
+    width: 100%;
+    padding: 5px 0px;
+  }
+
+  #opciones-servicios-corporativos {
+    width: 100%;
+    padding: 5px 0px;
+  }
+
+  .nav-links {
+    padding: 15px 0px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    top: 35px;
+    right: 0;
+    background-color: #2f435c;
+    z-index: 891;
+    text-align: center;
+  }
+
+  .nav-links.show {
+    display: flex;
+    z-index: 892;
+  }
+
+  .menu-icono {
+    display: block;
+    z-index: 2;
+  }
+
+  header {
+    padding: 5px 0;
+  }
+
+  .lavanderia {
+    padding: 0px 10px;
+    font-size: 25px;
+  }
+}

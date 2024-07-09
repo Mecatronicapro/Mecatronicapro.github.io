@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">Placas PBCs</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Introducción</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/jiKg8X05pC0?si=PMTjzZr_3ftj_19Y"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        </div>
+        <div class="cursos">
+            <h3>PLACAS PCB</h3>
+            <div class="temas">
+                <a href="Manufactura/1. SEMANA_1_TEORÍA_INTRO_PROYECTO_PRODUCTO (1).pdf">Introducción</a>
+                <a href="Manufactura/2. SEMANA_1_LABORATORIO.pdf">Mecatronicos</a>
+                <a href="Manufactura/3. Sistemas mecatonicos.pdf">Sistemas Mecatronicos</a>
+                <a href="Manufactura/4. Aplicacion en El peu.pdf">Aplicacion</a>
+                <a href="Manufactura/CUESTIONARIO - TA2 Ética e Impacto de ingeniería - copia.pdf">Ingenieros del
+                    Perú</a>
+                <a href="Manufactura/GRUPO 08.pdf">Avion</a>
+                <a href="Manufactura/EL32_TA1.1_G08.pdf"></a>
+                <a href="Manufactura/EL32_EL117_TA1.2_GRUPO08.pdf">PLC</a>
+                <a href="Manufactura/TA1.3_EL117_EL32_GRUPO08.pdf">Materiales</a>
+                <a href="Manufactura/TA3.1_EL117_EL32_GRUPO 03.pdf">Ceramicos</a>
+                <a href="Manufactura/TA3.2_EL117_EL32_GRUPO 08.pdf">Biomateriales</a>
+                <a href="Manufactura/SEMANA 02 LABORATORIO.pdf">Fuente de Voltaje 01</a>
+                <a href="Manufactura/SEMANA 03 LABORATORIO.pdf">Fuente de Voltaje 02</a>
+                <a href="Manufactura/SEMANA 04 LABORATORIO.pdf">Fuente de Voltaje 03</a>
+                <a href="Manufactura/Indicaciones para PCB Fuente de Poder 01.pdf">Indicaciones</a>
+                <a href="Manufactura/Conexiones de la Carcasa hacia la PCB.pdf">Conexion Fisica</a>
+                <a href="Manufactura/Parametros Transformador Proteus.xlsx">Parametros de Tranformador</a>
+                <a href="Manufactura/TB2-FUENTE DE PODER 3D- EL32-Jose Salcedo.pdf">Diseño de Fuente</a>
+                <a href="Manufactura/Practica Calificada 02.pdf">Ingenieros del Perú 02</a>
+                <a href="Manufactura/Intro a Arduino 01.pdf">Introducción Arduino</a>
+                <a href="Manufactura/Intro a Programacion 02.pdf">Programacion Arduino</a>
+                <a href="Manufactura/Entradas y Salidas Digitales 03.pdf">Entradas y Salidas</a>
+                <a href="Manufactura/Ejercicio Ascensor - Arduino - Copy.pdf">Ejercicio</a>
+                <a href="Manufactura/trabajo final - programas.txt">Programas Arduino</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Manufactura/1. SEMANA_1_TEORÍA_INTRO_PROYECTO_PRODUCTO (1).pdf">Introducción</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/2. SEMANA_1_LABORATORIO.pdf">Mecatronicos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/3. Sistemas mecatonicos.pdf">Sistemas Mecatronicos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/4. Aplicacion en El peu.pdf">Aplicacion</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/CUESTIONARIO - TA2 Ética e Impacto de ingeniería - copia.pdf">Ingenieros del Perú</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/GRUPO 08.pdf">Avion</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/EL32_TA1.1_G08.pdf"></a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/EL32_EL117_TA1.2_GRUPO08.pdf">PLC</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/TA1.3_EL117_EL32_GRUPO08.pdf">Materiales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/TA3.1_EL117_EL32_GRUPO 03.pdf">Ceramicos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/TA3.2_EL117_EL32_GRUPO 08.pdf">Biomateriales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/SEMANA 02 LABORATORIO.pdf">Fuente de Voltaje 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/SEMANA 03 LABORATORIO.pdf">Fuente de Voltaje 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/SEMANA 04 LABORATORIO.pdf">Fuente de Voltaje 03</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Indicaciones para PCB Fuente de Poder 01.pdf">Indicaciones</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Conexiones de la Carcasa hacia la PCB.pdf">Conexion Fisica</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Parametros Transformador Proteus.xlsx">Parametros de Tranformador</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/TB2-FUENTE DE PODER 3D- EL32-Jose Salcedo.pdf">Diseño de Fuente</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Practica Calificada 02.pdf">Ingenieros del Perú 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Intro a Arduino 01.pdf">Introducción Arduino</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Intro a Programacion 02.pdf">Programacion Arduino</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Entradas y Salidas Digitales 03.pdf">Entradas y Salidas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/Ejercicio Ascensor - Arduino - Copy.pdf">Ejercicio</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Manufactura/trabajo final - programas.txt">Programas Arduino</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
