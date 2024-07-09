@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">REDES INDUSTRIALES</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Introducción</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Nq4SJ0dWvR4?si=S5Lk6k7LjquIlkW8"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        </div>
+        <div class="cursos">
+            <h3>REDES INDUSTRIALES</h3>
+            <div class="temas">
+                <a href="Redes Industriales/MC38_SEMANA_01_INTRODUCCION.pdf">Introducción a Redes Industriales</a>
+                <a href="Redes Industriales/MC38_SEMANA_02.1 TRANSMISION DE DATOS V1.pdf">Transmisión de Datos V1</a>
+                <a href="Redes Industriales/MC38_SEMANA_03 BUS DE CAMPO.pdf">Bus de Campo</a>
+                <a href="Redes Industriales/MC38_SEMANA_04_AS-I.pdf">AS-I</a>
+                <a href="Redes Industriales/MC38_SEMANA_05_DEVICENET_1.pdf">DeviceNet 1</a>
+                <a href="Redes Industriales/MC38_SEMANA_05_MODBUS.pdf">Modbus</a>
+                <a href="Redes Industriales/MC38_SEMANA_06_FIELDBUS.pdf">Fieldbus</a>
+                <a href="Redes Industriales/MC38_SEMANA_07.1_PROFIBUS( R).pdf">PROFIBUS</a>
+                <a href="Redes Industriales/MC38_SEMANA_07.2_HART.pdf">HART</a>
+                <a href="Redes Industriales/MC38_SEMANA_09_Modelo Interconexion.pdf">Modelo de Interconexión</a>
+                <a href="Redes Industriales/MC38_SEMANA_10_Modelo OSI.pdf">Modelo OSI</a>
+                <a href="Redes Industriales/MC38_SEMANA_11_Modelo TCP-IP-V2.pdf">Modelo TCP-IP V2</a>
+                <a href="Redes Industriales/MC38_SEMANA_12_SEGMENTACION IP.pdf">Segmentación IP</a>
+                <a href="Redes Industriales/MC38_SEMANA_14_DISPOSITIVOS DE ENLACE.pdf">Dispositivos de Enlace</a>
+                <a>ANEXOS</a>
+                <a href="Redes Industriales/PC01.pdf">PC01</a>
+                <a href="Redes Industriales/Laboratorio 1-2_Grupo1.pdf">Laboratorio 1-2 Grupo 1</a>
+                <a href="Redes Industriales/HURD.pdf">HURD</a>
+                <a href="Redes Industriales/PARCIAL_REDES_G1.pdf">Parcial Redes G1</a>
+                <a href="Redes Industriales/Parcial Grupo 5.pdf">Parcial Grupo 5</a>
+                <a href="Redes Industriales/TF_GRUPO1.docx.pdf">TF Grupo 1</a>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_01_INTRODUCCION.pdf">Introducción a Redes Industriales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_02.1 TRANSMISION DE DATOS V1.pdf">Transmisión de Datos V1</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_03 BUS DE CAMPO.pdf">Bus de Campo</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_04_AS-I.pdf">AS-I</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_05_DEVICENET_1.pdf">DeviceNet 1</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_05_MODBUS.pdf">Modbus</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_06_FIELDBUS.pdf">Fieldbus</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_07.1_PROFIBUS( R).pdf">PROFIBUS</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_07.2_HART.pdf">HART</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_09_Modelo Interconexion.pdf">Modelo de Interconexión</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_10_Modelo OSI.pdf">Modelo OSI</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_11_Modelo TCP-IP-V2.pdf">Modelo TCP-IP V2</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_12_SEGMENTACION IP.pdf">Segmentación IP</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/MC38_SEMANA_14_DISPOSITIVOS DE ENLACE.pdf">Dispositivos de Enlace</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a>ANEXOS</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/PC01.pdf">PC01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/Laboratorio 1-2_Grupo1.pdf">Laboratorio 1-2 Grupo 1</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/HURD.pdf">HURD</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/PARCIAL_REDES_G1.pdf">Parcial Redes G1</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/Parcial Grupo 5.pdf">Parcial Grupo 5</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Redes Industriales/TF_GRUPO1.docx.pdf">TF Grupo 1</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

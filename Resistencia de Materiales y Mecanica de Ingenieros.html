@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">RESISTENCIA DE MATERIALES Y MECANICA DE
+                    INGENIEROS</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Equilibrio</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/85c7PMwmYMw?si=OYGZEPJSgBOeiq-x"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Torque</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/L5S-Ea8VXr4?si=jZ5DEmszGMsrmyGu"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Momento de Inercia</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5wu7VMgt_6g?si=LDO1K9HGLwrtGqYh"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="cursos">
+            <h3>Resistencia de Materiales y Mecanica de Ingenieros</h3>
+            <div class="temas">
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Equilibrio.pdf">Equilibrio</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Estructuras (Armaduras).pdf">Estructuras
+                    (Armaduras)</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Centroide, Area y Volumen.pdf">Centroide, Area y Volumen</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Fuerza Cortante y Momento Flector.pdf">Fuerza
+                    Cortante y Momento Flector</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Cargas Axiales.pdf">Cargas Axiales</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Esfuerzos.pdf">Esfuerzos</a>
+                <a
+                    href="Resistencia de Materiales y Mecanica de Ingenieros/Transformacion de Esfuerzos y Deformaciones.pdf">Transformacion
+                    de Esfuerzos y Deformaciones</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Deflexion de Vigas.pdf">Deflexion de
+                    Vigas</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Analisis Tridimensional de Esfuerzos.pdf">Analisis Tridimensional de Esfuerzos</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Flexión.pdf">Flexión</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Torsión.pdf">Torsión</a>
+                <a href="Resistencia de Materiales y Mecanica de Ingenieros/Columnas.pdf">Columnas</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Equilibrio.pdf">Equilibrio</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Estructuras (Armaduras).pdf">Estructuras (Armaduras)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Centroide, Area y Volumen.pdf">Centroide, Area y Volumen</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Fuerza Cortante y Momento Flector.pdf">Fuerza Cortante y Momento Flector</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Cargas Axiales.pdf">Cargas Axiales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Esfuerzos.pdf">Esfuerzos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Transformacion de Esfuerzos y Deformaciones.pdf">Transformacion de Esfuerzos y Deformaciones</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Deflexion de Vigas.pdf">Deflexion de Vigas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Analisis Tridimensional de Esfuerzos.pdf">Analisis Tridimensional de Esfuerzos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Flexión.pdf">Flexión</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Torsión.pdf">Torsión</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Resistencia de Materiales y Mecanica de Ingenieros/Columnas.pdf">Columnas</a>' +
+                        '</div>';
+
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

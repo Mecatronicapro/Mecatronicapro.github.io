@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">Señales y Sistemas</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Señales y Sistemas</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mm9sPtAnQUk?si=wefo5KnGtgWjG2iF"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="cursos">
+            <h3>Señales</h3>
+            <div class="temas">
+                <a href="Señales/Repaso Para Señales.pdf">Repaso Para Señales</a>
+                <a href="Señales/EL231SYSEL63Unidad1A.pdf">Introducción 01</a>
+                <a href="Señales/EL231SYSEL63Unidad1B.pdf">Introducción 02</a>
+                <a href="Señales/TEORIA DE SEÑALES.pdf">Teoria de Señales</a>
+                <a href="Señales/PC01_Final.pdf">Practica 01</a>
+                <a href="Señales/PC1 2023 2.pdf">Practica 01_1</a>
+                <a href="Señales/EL231SYSNotasDeClaseUnidad1.pdf">Respuesta en el Tiempo 01</a>
+                <a href="Señales/EL231SYSNotasDeClaseUnidad2.pdf">Respuesta en el Tiempo 02</a>
+                <a href="Señales/apuntes profe.pdf">Respuesta ene el Tiempo 03</a>
+                <a href="Señales/SISTEMAS LTI.pdf">Sistemas LTI</a>
+                <a href="Señales/clase_diseno_filtros_SyS_UPC_v5(1).pdf">Diseño de Filtros</a>
+                <a href="Señales/Parcial01.pdf">Diseño de Filtro 01</a>
+                <a href="Señales/Parcial02.pdf">Diseño de Filtro 02</a>
+                <a href="Señales/EL231SYSTP2024IEL63Audio.wav">Rechaza Banda 01</a>
+                <a href="Señales/Parcial03.m">Rechaza Banda 02</a>
+                <a href="Señales/Teoría - Caracterización en tiempo y frecuencia.pdf">Respuesta en Frecuencia</a>
+                <a href="Señales/Tabla de MF y MG.pdf">Sistemas de 1ro y 2do Orden Tabla</a>
+                <a href="Señales/PC02_Final.pdf">Pratica 02</a>
+                <a href="Señales/DD.pdf">Trabajo en Equipo</a>
+                <a href="Señales/EL231SYSNotasDeClaseUnidades3y4.pdf">Respuesta Aleatoria</a>
+                <a href="Señales/TEORÍA DE PROBABILIDAD - PARTE 1.pdf">Teoria de probabilidad 01</a>
+                <a href="Señales/TEORÍA DE PROBABILIDAD - PARTE 2.pdf">Teoria de probabilidad 02</a>
+                <a href="Señales/TEORÍA DE PROBABILIDAD - PARTE 3.pdf">Teoria de probabilidad 03</a>
+                <a href="Señales/AnalisisEstructuralDinamico.m">Analisis Dinamico</a>
+                <a href="Señales/PC03_Final01.pdf">Practica 03_1</a>
+                <a href="Señales/PC03_Final02.pdf">Practica 03_2</a>
+                <a href="Señales/Final01.pdf">Analisis Sismico 01</a>
+                <a href="Señales/Final02.pdf">Analisis Sismico 02</a>
+                <a href="Señales/Final03.m">Analisis Sismico 03</a>
+                <a href="Señales/EL231SYSTF2024IData.mat">Analisis Sismico Datos</a>
+                <a>Anexos</a>
+                <a href="Señales/Señales y sistemas - Alan Oppenheim (Cap. 1, 2 y 6).pdf">Alan Oppenheim</a>
+                <a href="Señales/Transformada de Fourier.pdf">Transformada de Fourier</a>
+                <a href="Señales/Transformada de Laplace.pdf">Transformada de Place</a>
+                <a href="Señales/Carlson2001CommunicationSystems.pdf">Sistemas de Comunicacion</a>
+                <a href="Señales/Oppenheim2017SignalsSystemsInference..pdf">Interfaz de Señales y Sistemas</a>
+                <a href="Señales/Peebles2006PrincipiosDeProbabilidad.pdf">Princios de Probabilidad</a>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Señales/Repaso Para Señales.pdf">Repaso Para Señales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSEL63Unidad1A.pdf">Introducción 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSEL63Unidad1B.pdf">Introducción 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/TEORIA DE SEÑALES.pdf">Teoria de Señales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/PC01_Final.pdf">Practica 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/PC1 2023 2.pdf">Practica 01_1</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSNotasDeClaseUnidad1.pdf">Respuesta en el Tiempo 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSNotasDeClaseUnidad2.pdf">Respuesta en el Tiempo 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/apuntes profe.pdf">Respuesta en el Tiempo 03</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/SISTEMAS LTI.pdf">Sistemas LTI</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/clase_diseno_filtros_SyS_UPC_v5(1).pdf">Diseño de Filtros</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Parcial01.pdf">Diseño de Filtro 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Parcial02.pdf">Diseño de Filtro 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSTP2024IEL63Audio.wav">Rechaza Banda 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Parcial03.m">Rechaza Banda 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Teoría - Caracterización en tiempo y frecuencia.pdf">Respuesta en Frecuencia</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Tabla de MF y MG.pdf">Sistemas de 1ro y 2do Orden Tabla</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/PC02_Final.pdf">Practica 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/DD.pdf">Trabajo en Equipo</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSNotasDeClaseUnidades3y4.pdf">Respuesta Aleatoria</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/TEORÍA DE PROBABILIDAD - PARTE 1.pdf">Teoria de probabilidad 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/TEORÍA DE PROBABILIDAD - PARTE 2.pdf">Teoria de probabilidad 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/TEORÍA DE PROBABILIDAD - PARTE 3.pdf">Teoria de probabilidad 03</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/AnalisisEstructuralDinamico.m">Analisis Dinamico</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/PC03_Final01.pdf">Practica 03_1</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/PC03_Final02.pdf">Practica 03_2</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Final01.pdf">Analisis Sismico 01</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Final02.pdf">Analisis Sismico 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Final03.m">Analisis Sismico 03</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/EL231SYSTF2024IData.mat">Analisis Sismico Datos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Señales y sistemas - Alan Oppenheim (Cap. 1, 2 y 6).pdf">Alan Oppenheim</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Transformada de Fourier.pdf">Transformada de Fourier</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Transformada de Laplace.pdf">Transformada de Laplace</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Carlson2001CommunicationSystems.pdf">Sistemas de Comunicacion</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Oppenheim2017SignalsSystemsInference.pdf">Interfaz de Señales y Sistemas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Señales/Peebles2006PrincipiosDeProbabilidad.pdf">Principios de Probabilidad</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

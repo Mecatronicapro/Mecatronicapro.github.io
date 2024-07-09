@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">ELECTRÓNICOS</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Diodo</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/8-uOhBkZ928?si=UqkH06DkBMc3GYU9"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Diodo Zener</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ZxzLeULhXUI?si=Q8R61uTdUnOFdzHS"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Transistores BJT</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/JZYK2Zo8yfw?si=8gZhfo2bSYRmVay_"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/65jKlnoXrWY?si=gLJ3xhyVvH5jYc3W"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Amplificador Operacional</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/EZIufczc7fE?si=ULR8r2oc-yx2V5Mm"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="cursos">
+            <h3>Matematica Basica</h3>
+            <div class="temas">
+                <a href="Electrónicos/Teoria Diodos.pdf">Teoria Diodos</a>
+                <a href="Electrónicos/Ejercicios Diodos.pdf">Ejercicios Diodos</a>
+                <a href="Electrónicos/Teoria de Transistores bipolares (BJT).pdf">Teoria de Transistores bipolares
+                    (BJT)</a>
+                <a href="Electrónicos/Ejercicios con Transistores BJT.pdf">Ejercicios con Transistores BJT</a>
+                <a href="Electrónicos/Teoria de Transistores de Efecto de Campo.pdf">Teoria de Transistores de Efecto de
+                    Campo</a>
+                <a href="Electrónicos/Ejecicios con Transistores de Efecto de Campo.pdf">Ejecicios con Transistores de
+                    Efecto de Campo</a>
+                <a href="Electrónicos/Aplicaciones con Semiconductores.pdf">Aplicaciones con Semiconductores</a>
+                <a href="Electrónicos/Ejercicios con Diodos, Transistores y Diferenciadores.pdf">Ejercicios con
+                    Semiconductores</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Teoria Diodos.pdf">Teoria Diodos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Ejercicios Diodos.pdf">Ejercicios Diodos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Teoria de Transistores bipolares (BJT).pdf">Teoria de Transistores bipolares (BJT)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Ejercicios con Transistores BJT.pdf">Ejercicios con Transistores BJT</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Teoria de Transistores de Efecto de Campo.pdf">Teoria de Transistores de Efecto de Campo</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Ejecicios con Transistores de Efecto de Campo.pdf">Ejecicios con Transistores de Efecto de Campo</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Aplicaciones con Semiconductores.pdf">Aplicaciones con Semiconductores</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Electrónicos/Ejercicios con Diodos, Transistores y Diferenciadores.pdf">Ejercicios con Semiconductores</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
