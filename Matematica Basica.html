@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">MATEMATICA BASICA</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Funciones</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/sjDK1HH-Mjc?si=PU3FxYw_8qJaU1_g"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Función Sinusoidal</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/-_YsGWAxQpk?si=QJmIxkCVhelVolM4"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Vectores en 2D</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xoS8eLLezrw?si=7NIrMNJImp2smM87"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <h4>Optimización</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/AZGZr8VQdKA?si=L24uQJr2-0JUA28Z"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="cursos">
+            <h3>Matematica Basica</h3>
+            <div class="temas">
+                <a href="Matematica Basica/Ecuacion Exponencial y Logaritmica.pdf">Función Exponencial y Logaritmica</a>
+                <a href="Matematica Basica/Composición de Funciones.pdf">Composición de Funciones</a>
+                <a href="Matematica Basica/Funcion cuadratica y optimizacion.pdf">Funcion Cuadrática y optimizacion</a>
+                <a href="Matematica Basica/Funciones trigonometricas.pdf">Funciones Trigonometricas</a>
+                <a href="Matematica Basica/La elipse.pdf">La Elipse</a>
+                <a href="Matematica Basica/La parabola.pdf">La Parábola</a>
+                <a href="Matematica Basica/Plano Cartesiano_Rectas(Pendiente).pdf">Plano Cartesiano
+                    Rectas(Pendiente)</a>
+                <a href="Matematica Basica/Vectores en 2D.pdf">Vectores en 2D</a>
+                <a href="Matematica Basica/Funciones Sinusoidales.pdf">Funciones Sinusoidales</a>
+                <a href="Matematica Basica/Problemas con Funciones Exponencial y Logaritmicas.pdf">Problemas con
+                    Funciones Exponencial y Logaritmicas</a>
+                <a href="Matematica Basica/Prueba tu Nivel.pdf">Prueba tu Nivel</a>
+                <a href="Matematica Basica/Optimizacion_Ejercicios.pdf">Optimizacion Ejercicios</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Ecuacion Exponencial y Logaritmica.pdf">Función Exponencial y Logarítmica</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Composición de Funciones.pdf">Composición de Funciones</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Funcion cuadratica y optimizacion.pdf">Función Cuadrática y optimización</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Funciones trigonometricas.pdf">Funciones Trigonométricas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/La elipse.pdf">La Elipse</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/La parabola.pdf">La Parábola</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Plano Cartesiano_Rectas(Pendiente).pdf">Plano Cartesiano Rectas (Pendiente)</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Vectores en 2D.pdf">Vectores en 2D</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Funciones Sinusoidales.pdf">Funciones Sinusoidales</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Problemas con Funciones Exponencial y Logaritmicas.pdf">Problemas con Funciones Exponencial y Logarítmicas</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Prueba tu Nivel.pdf">Prueba tu Nivel</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Matematica Basica/Optimizacion_Ejercicios.pdf">Optimización Ejercicios</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
