@@ -1,0 +1,670 @@
+secuencia BÁSICA
+  int mab1=2;
+  int mar1=3;
+  int miz=4;
+  int mdr=5;
+  int mar2=6;
+  int mab2=7;
+  
+  int LY=8;
+  int LA=9;
+  int LG=10;
+  int LO=11;
+  
+  int pm1=12;
+  int leerpm1;
+  int pm2=13;
+  int leerpm2;
+  int sab1=0;
+  int leersab1;
+  int sar1=1;
+  int leersar1;
+  int sar2=4;
+  int leersar2;
+  int sab2=5;
+  int leersab2;
+  int siz=2;
+  int leersiz;
+  int sdr=3;
+  int leersdr;
+  
+  void setup()
+  {
+    Serial.begin(9600);
+    pinMode(LA,OUTPUT);
+    pinMode(LY,OUTPUT);
+    pinMode(LG,OUTPUT);
+    pinMode(LO,OUTPUT);
+    
+    pinMode(mar1,OUTPUT);
+    pinMode(mab1,OUTPUT);
+    pinMode(mar2,OUTPUT);  
+    pinMode(mab2,OUTPUT);
+    pinMode(mdr,OUTPUT);
+    pinMode(miz,OUTPUT);
+
+    pinMode(pm1,INPUT);
+    pinMode(pm2,INPUT);
+  }
+
+void motor1sube() 
+  {
+    digitalWrite(mar1,HIGH);
+    digitalWrite(mab1,LOW);
+  }
+
+void motor1baja() 
+  {
+    digitalWrite(mar1,LOW);
+    digitalWrite(mab1,HIGH);
+  }
+
+void motor1detenido() 
+  {
+    digitalWrite(mar1,LOW);
+    digitalWrite(mab1,LOW);
+  }
+
+
+void motor2baja() 
+  {
+    digitalWrite(mar2,HIGH);
+    digitalWrite(mab2,LOW);
+  }
+
+void motor2sube() 
+  {
+    digitalWrite(mar2,LOW);
+    digitalWrite(mab2,HIGH);
+  }
+
+void motor2detenido() 
+  {
+    digitalWrite(mar2,LOW);
+    digitalWrite(mab2,LOW);
+  }
+void motordesplazamientoderecha() 
+  {
+    digitalWrite(miz,LOW);
+    digitalWrite(mdr,HIGH);
+  }
+
+void motordesplazamientoizquierda() 
+  {
+    digitalWrite(miz,HIGH);
+    digitalWrite(mdr,LOW);
+  }
+
+void motordesplazamientodetenido() 
+  {
+    digitalWrite(miz,LOW);
+    digitalWrite(mdr,LOW);
+  }
+
+void loop() 
+  {
+    leerpm1=digitalRead(pm1);
+    leerpm2=digitalRead(pm2);
+  
+    Serial.println("+++++++++++++++++++++++++++++++++++++++++++++++");
+    Serial.println("INDICAR EN QUE POSICION SE ENCUENTRA EL PAQUETE");
+    Serial.println("...............................................");
+    Serial.println(" ");
+    delay(1000);
+    
+       
+        while(leerpm1==0&&leerpm2==0)
+          {
+            leerpm1=digitalRead(pm1);
+            leerpm2=digitalRead(pm2);
+            leersab1=analogRead(sab1);
+            leersab2=analogRead(sab2);
+                    if(leersab1==1023)
+                  {
+                    Serial.println("");
+                    Serial.println("EL PAQUETE SE ENCUENTRA EN LA POSICION 1");
+                    Serial.println(" ");
+                    Serial.println(" ");
+                    Serial.println("PRESIONE  PM2 !! PARA INICIAR TRASLADO A POSICION 2");
+                    Serial.println(""); 
+                    Serial.println("---------------------------------------------------");
+                    delay(1000);
+                    digitalWrite(LY,HIGH); 
+                  }
+                  else
+                  {
+                    digitalWrite(LY,LOW);
+                  }
+                  
+                  if(leersab2==1023)
+                  {
+                    Serial.println("");
+                    Serial.println("EL PAQUETE SE ENCUENTRA EN LA POSICION 2");
+                    Serial.println(" ");
+                    Serial.println(" ");
+                    Serial.println("PRESIONE  PM1 !! PARA INICIAR TRASLADO A POSICION 1");
+                    Serial.println(" "); 
+                    Serial.println("---------------------------------------------------");
+                    delay(1000);
+                    digitalWrite(LA,HIGH);      
+                  }
+                  else
+                  {
+                    digitalWrite(LA,LOW);
+                  }
+          }
+ //Secuencia para desplazamiento de posición 1 a posicion 2
+    if (leersab1==1023&&leerpm2==1)
+    {
+        Serial.println(" ");
+        Serial.println("INICIANDO TRASLADO");
+        Serial.println(" ");
+        digitalWrite(LG,HIGH);
+        Serial.println("");
+        Serial.println("MORTOR 1 SUBE EL PAQUETE A MOTOR3 ");
+        Serial.println("");
+        digitalWrite(LY,LOW);
+        motor1sube();
+        delay(2000);
+        motor1detenido();
+        delay(1000);
+               if (leersab1==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SAB1");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               } 
+          motordesplazamientoderecha();
+          Serial.println(" ");
+          Serial.println("EL MOTOR 3 DESPLAZA EL PAQUETE A LA DERECHA");
+          Serial.println(" ");
+          delay(2000);
+          motordesplazamientodetenido();
+          delay(1000);
+        Serial.println(" "); 
+        Serial.println("EL MOTOR 2 BAJA EL PAQUETE A POSICION 2");
+        Serial.println(" ");
+        motor2baja();
+        delay(2000);
+        motor2detenido();
+        digitalWrite(LA,HIGH);
+        digitalWrite(LG,LOW);
+        Serial.println("");
+        Serial.println("EL PAQUETE FUE DESPLAZADO A LA PISION 2");
+        Serial.println("+++++++++++++++++++++++++++++++++++++++");
+        Serial.println("");
+        Serial.println("");
+        Serial.println("");
+        delay(3000);
+    }   
+    
+    
+    //Secuencia para desplazamiento de posición 2 a la posicion 1
+    if (leersab2==1023&&leerpm1==1)
+    {
+        Serial.println(" ");
+        Serial.println("INICIANDO TRASLADO");
+        Serial.println(" ");
+        digitalWrite(LO,HIGH);
+        Serial.println("");
+        Serial.println("MORTOR 2 SUBE EL PAQUETE A MOTOR3 ");
+        Serial.println("");
+        digitalWrite(LA,LOW);
+        motor2sube();
+        delay(2000);
+        motor2detenido();
+        delay(1000);
+             if (leersab2==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SAB2");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               } 
+          motordesplazamientoizquierda();
+          Serial.println(" ");
+          Serial.println("EL MOTOR 3 DESPLAZA EL PAQUETE A LA IZQUIERDA");
+          Serial.println(" ");
+          delay(2000);
+          motordesplazamientodetenido();
+          delay(1000);
+        Serial.println(" "); 
+        Serial.println("EL MOTOR 1 BAJA EL PAQUETE A POSICION 1");
+        Serial.println(" ");
+        motor1baja();
+        delay(2000);
+        motor1detenido();
+        digitalWrite(LO,LOW);
+        Serial.println("");
+        Serial.println("EL PAQUETE FUE DESPLAZADO A LA PISICION 1");
+        Serial.println("+++++++++++++++++++++++++++++++++++++++");
+        Serial.println("");
+        Serial.println("");
+        Serial.println("");
+        digitalWrite(LY,HIGH);
+        delay(3000);
+    }
+
+}
+secuencia INTERMEDIA 
+-------------------------------------
+    int mab1=2;
+  int mar1=3;
+  int miz=4;
+  int mdr=5;
+  int mar2=6;
+  int mab2=7;
+  
+  int LY=8;
+  int LA=9;
+  int LG=10;
+  int LO=11;
+  
+  int pm1=12;
+  int leerpm1;
+  int pm2=13;
+  int leerpm2;
+  int sab1=0;
+  int leersab1;
+  int sar1=1;
+  int leersar1;
+  int sar2=4;
+  int leersar2;
+  int sab2=5;
+  int leersab2;
+  int siz=2;
+  int leersiz;
+  int sdr=3;
+  int leersdr;
+  
+  void setup()
+  {
+    Serial.begin(9600);
+    pinMode(LA,OUTPUT);
+    pinMode(LY,OUTPUT);
+    pinMode(LG,OUTPUT);
+    pinMode(LO,OUTPUT);
+    
+    pinMode(mar1,OUTPUT);
+    pinMode(mab1,OUTPUT);
+    pinMode(mar2,OUTPUT);  
+    pinMode(mab2,OUTPUT);
+    pinMode(mdr,OUTPUT);
+    pinMode(miz,OUTPUT);
+
+    pinMode(pm1,INPUT);
+    pinMode(pm2,INPUT);
+  }
+
+void motor1sube() 
+  {
+    digitalWrite(mar1,HIGH);
+    digitalWrite(mab1,LOW);
+  }
+
+void motor1baja() 
+  {
+    digitalWrite(mar1,LOW);
+    digitalWrite(mab1,HIGH);
+  }
+
+void motor1detenido() 
+  {
+    digitalWrite(mar1,LOW);
+    digitalWrite(mab1,LOW);
+  }
+
+
+void motor2baja() 
+  {
+    digitalWrite(mar2,HIGH);
+    digitalWrite(mab2,LOW);
+  }
+
+void motor2sube() 
+  {
+    digitalWrite(mar2,LOW);
+    digitalWrite(mab2,HIGH);
+  }
+
+void motor2detenido() 
+  {
+    digitalWrite(mar2,LOW);
+    digitalWrite(mab2,LOW);
+  }
+void motordesplazamientoderecha() 
+  {
+    digitalWrite(miz,LOW);
+    digitalWrite(mdr,HIGH);
+  }
+
+void motordesplazamientoizquierda() 
+  {
+    digitalWrite(miz,HIGH);
+    digitalWrite(mdr,LOW);
+  }
+
+void motordesplazamientodetenido() 
+  {
+    digitalWrite(miz,LOW);
+    digitalWrite(mdr,LOW);
+  }
+
+void loop() 
+  {
+    leerpm1=digitalRead(pm1);
+    leerpm2=digitalRead(pm2);
+  
+    Serial.println("+++++++++++++++++++++++++++++++++++++++++++++++");
+    Serial.println("INDICAR EN QUE POSICION SE ENCUENTRA EL PAQUETE");
+    Serial.println("...............................................");
+    Serial.println(" ");
+    delay(1000);
+    
+       
+        while(leerpm1==0&&leerpm2==0)
+          {
+            leerpm1=digitalRead(pm1);
+            leerpm2=digitalRead(pm2);
+            leersab1=analogRead(sab1);
+            leersab2=analogRead(sab2);
+                    if(leersab1==1023)
+                  {
+                    Serial.println("");
+                    Serial.println("EL PAQUETE SE ENCUENTRA EN LA POSICION 1");
+                    Serial.println(" ");
+                    Serial.println(" ");
+                    Serial.println("PRESIONE  PM2 !! PARA INICIAR TRASLADO A POSICION 2");
+                    Serial.println(""); 
+                    Serial.println("---------------------------------------------------");
+                    delay(1000);
+                    digitalWrite(LY,HIGH); 
+                  }
+                  else
+                  {
+                    digitalWrite(LY,LOW);
+                  }
+                  
+                  if(leersab2==1023)
+                  {
+                    Serial.println("");
+                    Serial.println("EL PAQUETE SE ENCUENTRA EN LA POSICION 2");
+                    Serial.println(" ");
+                    Serial.println(" ");
+                    Serial.println("PRESIONE  PM1 !! PARA INICIAR TRASLADO A POSICION 1");
+                    Serial.println(" "); 
+                    Serial.println("---------------------------------------------------");
+                    delay(1000);
+                    digitalWrite(LA,HIGH);      
+                  }
+                  else
+                  {
+                    digitalWrite(LA,LOW);
+                  }
+          }
+ //Secuencia para desplazamiento de posición 1 a posicion 2
+    if (leersab1==1023&&leerpm2==1)
+    {
+        Serial.println(" ");
+        Serial.println("INICIANDO TRASLADO");
+        Serial.println(" ");
+        digitalWrite(LG,HIGH);
+        Serial.println("");
+        Serial.println("MORTOR 1 SUBE EL PAQUETE A MOTOR3 ");
+        Serial.println("");
+        digitalWrite(LY,LOW);
+        leersiz=analogRead(siz);
+        leersar1=analogRead(sar1);
+        leersab1=analogRead(sab1);
+          while(leersiz==0||leersar1==0||leersab1==1023)
+          {     motor1sube();
+               leersab1=analogRead(sab1);
+               leersiz=analogRead(siz);
+               leersar1=analogRead(sar1);
+               if (leersab1==1023&&leersiz==1023&&leersar1==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SAB1");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               }               
+               while(leersab1==1023&&leersiz==1023&&leersar1==1023)
+               {
+                 motor1detenido();
+                 leersab1=analogRead(sab1);
+                 leersiz=analogRead(siz);
+                 leersar1=analogRead(sar1);
+               }               
+          }
+          motor1detenido();
+          delay(1000);
+          Serial.println(" ");
+          Serial.println("EL MOTOR 3 DESPLAZA EL PAQUETE A LA DERECHA");
+          Serial.println(" ");
+
+          leersdr=analogRead(sdr);
+          leersar2=analogRead(sar2);
+          leersiz=analogRead(siz);
+          leersar1=analogRead(sar1);
+        
+      while(leersdr==0||leersar2==0||leersiz==1023||leersar1==1023)
+          {
+            motordesplazamientoderecha();
+               leersdr=analogRead(sdr);
+               leersar2=analogRead(sar2);
+               leersiz=analogRead(siz);
+               leersar1=analogRead(sar1);
+               
+               if (leersdr==1023&&leersar2==1023&&leersiz==1023&&leersar1==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SAR1 O SIZ");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               }
+               
+               while(leersdr==1023&&leersar2==1023&&leersiz==1023&&leersar1==1023)
+               {
+                motordesplazamientodetenido();
+               leersdr=analogRead(sdr);
+               leersar2=analogRead(sar2);
+               leersiz=analogRead(siz);
+               leersar1=analogRead(sar1);
+               }
+          }
+          motordesplazamientodetenido();
+        delay(1000);
+        Serial.println(" "); 
+        Serial.println("EL MOTOR 2 BAJA EL PAQUETE A POSICION 2");
+        Serial.println(" ");
+        leersab2=analogRead(sab2);
+        leersdr=analogRead(sdr);
+        leersar2=analogRead(sar2);
+      
+          while(leersab2==0||leersdr==1023||leersar2==1023)
+          {
+            motor2baja();
+              leersab2=analogRead(sab2);
+              leersdr=analogRead(sdr);
+              leersar2=analogRead(sar2);
+               
+               if (leersab2==1023&&leersdr==1023&&leersar2==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SRD O SAR2");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               }
+               
+               while(leersab2==1023&&leersdr==1023&&leersar2==1023)
+               {
+                motor2detenido();
+                leersab2=analogRead(sab2);
+                leersdr=analogRead(sdr);
+                leersar2=analogRead(sar2);
+               }
+          }
+        motor2detenido();
+        digitalWrite(LA,HIGH);
+        digitalWrite(LG,LOW);
+        Serial.println("");
+        Serial.println("EL PAQUETE FUE DESPLAZADO A LA PISION 2");
+        Serial.println("+++++++++++++++++++++++++++++++++++++++");
+        Serial.println("");
+        Serial.println("");
+        Serial.println("");
+        delay(3000);
+    }   
+    
+    
+    //Secuencia para desplazamiento de posición 2 a la posicion 1
+    if (leersab2==1023&&leerpm1==1)
+    {
+        Serial.println(" ");
+        Serial.println("INICIANDO TRASLADO");
+        Serial.println(" ");
+        digitalWrite(LO,HIGH);
+        Serial.println("");
+        Serial.println("MORTOR 2 SUBE EL PAQUETE A MOTOR3 ");
+        Serial.println("");
+        digitalWrite(LA,LOW);
+        leersdr=analogRead(sdr);
+        leersar2=analogRead(sar2);
+        leersab2=analogRead(sab2);
+        
+          while(leersdr==0||leersar2==0||leersab2==1023)
+          {
+            motor2sube();
+                leersdr=analogRead(sdr);
+                leersar2=analogRead(sar2);
+                leersab2=analogRead(sab2);
+               if (leersdr==1023&&leersar2==1023&&leersab2==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SAB2");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               }
+               
+               while(leersdr==1023&&leersar2==1023&&leersab2==1023)
+               {
+                motor2detenido();
+                leersdr=analogRead(sdr);
+                leersar2=analogRead(sar2);
+                leersab2=analogRead(sab2);
+               }
+               
+          }
+          motor2detenido();
+          delay(1000);
+        Serial.println("");
+        Serial.println("EL MOTOR 3 DESPLAZA EL PAQUETE A LA IZQUIERDA");
+        Serial.println("");
+        leersdr=analogRead(sdr);
+        leersar2=analogRead(sar2);
+        leersiz=analogRead(siz);
+        leersar1=analogRead(sar1);
+          while(leersiz==0||leersar1==0)
+          {
+            motordesplazamientoizquierda();
+               leersiz=analogRead(siz);
+               leersar1=analogRead(sar1);
+          }
+          while(leersar1==0||leersiz==0||leersar2==1023||leersdr==1023)
+          {
+            motordesplazamientoizquierda();
+                leersdr=analogRead(sdr);
+                leersar2=analogRead(sar2);
+                leersiz=analogRead(siz);
+                leersar1=analogRead(sar1);
+               
+               if (leersar1==1023&&leersiz==1023&&leersar2==1023&&leersdr==1023)
+               {
+                 Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SAR2 O SDR");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               }
+               
+               while(leersar1==1023&&leersiz==1023&&leersar2==1023&&leersdr==1023)
+               {
+                motordesplazamientodetenido();
+                leersdr=analogRead(sdr);
+                leersar2=analogRead(sar2);
+                leersiz=analogRead(siz);
+                leersar1=analogRead(sar1);
+               }
+          }
+        motordesplazamientodetenido();
+        delay(1000);
+        Serial.println(""); 
+        Serial.println("EL MOTOR 1 BAJA EL PAQUETE A POSICION 1");
+        Serial.println("");
+      
+      leersab1=analogRead(sab1);
+      leersiz=analogRead(siz);
+      leersar1=analogRead(sar1);
+      
+          while(leersab1==0||leersiz==1023||leersar1==1023)
+          {
+            motor1baja();
+              leersab1=analogRead(sab1);
+              leersiz=analogRead(siz);
+              leersar1=analogRead(sar1);
+               
+               if (leersab1==1023&&leersiz==1023&&leersar1==1023)
+               {
+                  Serial.println("");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println("ADVERTENCIA:No a desactivo ");
+                  Serial.println("SIZ O SRD1");
+                  Serial.println("SE DEBE DESPEJAR PARA PARA CONTINUAR");
+                  Serial.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+                  Serial.println(" ");
+               }
+               
+               while(leersab1==1023&&leersiz==1023&&leersar1==1023)
+               {
+                motor1detenido();
+                leersab1=analogRead(sab1);
+                leersiz=analogRead(siz);
+                leersar1=analogRead(sar1);
+               }
+               
+          }
+        motor1detenido();
+      
+        digitalWrite(LO,LOW);
+        Serial.println("");
+        Serial.println("EL PAQUETE FUE DESPLAZADO A LA PISICION 1");
+        Serial.println("+++++++++++++++++++++++++++++++++++++++");
+        Serial.println("");
+        Serial.println("");
+        Serial.println("");
+        digitalWrite(LY,HIGH);
+        delay(3000);
+    }
+
+}
