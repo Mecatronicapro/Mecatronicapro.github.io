@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/estatica.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-bVat3WDpHO+zOUDCzbA4Uvq1Hv4p2W8iER5LzUvFzIp/CM99WL5TM1RZUxvZ8Pm2C1pu7mViFN6aiY61ACUHlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>MecaXplora</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <span class="lavanderia">MecaXplora</span>
+            <label for="menu" class="menu-icono">
+                <img src="images/menu.png" alt="Icono de menú" width="30px" height="20px">
+            </label>
+            <div class="nav-links">
+                <a href="index.html">INICIO</a>
+                <a id="servicios-corporativos" class="hidden-on-small">Mandos Neumaticos</a>
+            </div>
+        </nav>
+    </header>
+    <section class="contenido_de_los_cursos">
+        <div class="videos">
+            <h4>Mandos Hidraulicos</h4>
+            <div class="video-responsive">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Wee85cI6wwQ?si=8aDkc6wk8srlJhpY"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        </div>
+        <div class="cursos">
+            <h3>MANDOS HIDRAULICOS</h3>
+            <div class="temas">
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 01.pdf">Introducción</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 02.pdf">Clase 02</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 03.pdf">Clase 03</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 04.pdf">Clase 04</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 05.pdf">Clase 05</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 06.pdf">Clase 06</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 07.pdf">Clase 07</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 09.pdf">Clase 09</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 10.pdf">Clase 10</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 11.pdf">Clase 11</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 12.pdf">Clase 12</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 13.pdf">Clase 13</a>
+                <a href="Mandos/MC34 Mandos NeuHid Sesion 14.pdf">Clase 14</a>
+                <a href="Mandos/Calculo caudal aire comprimido.xlsx">Calculos</a>
+                <a href="Mandos/3b1815bf-e760-4b36-b627-16ffb347e6ae.pdf">KALMAN</a>
+                <a href="https://www.youtube.com/watch?v=afJYbkIEezI&list=PL6dG0Yh_fftIzU4Td2yH_cdxX-gYqGkS4">Reducción
+                    Bloques</a>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviciosCorporativosLink = document.getElementById('servicios-corporativos');
+            var opcionesContainer = crearOpcionesContainer();
+            var timeoutId;
+
+            serviciosCorporativosLink.addEventListener('mouseover', mostrarOpciones);
+            opcionesContainer.addEventListener('mouseover', function () {
+                clearTimeout(timeoutId);
+            });
+
+            serviciosCorporativosLink.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+            opcionesContainer.addEventListener('mouseout', function () {
+                timeoutId = setTimeout(cerrarOpciones, 500);
+            });
+
+            document.querySelector('.menu-icono').addEventListener('click', function () {
+                document.querySelector('.nav-links').classList.toggle('show');
+            });
+
+            function mostrarOpciones() {
+                var rect = serviciosCorporativosLink.getBoundingClientRect();
+                opcionesContainer.style.top = rect.bottom + 'px';
+                opcionesContainer.style.left = rect.left + 'px';
+                opcionesContainer.classList.add('visible');
+                document.addEventListener('click', cerrarOpciones);
+            }
+
+            function cerrarOpciones() {
+                opcionesContainer.classList.remove('visible');
+                document.removeEventListener('click', cerrarOpciones);
+            }
+
+            function crearOpcionesContainer() {
+                var container = document.getElementById('opciones-servicios-corporativos');
+                if (!container) {
+                    container = document.createElement('section');
+                    container.id = 'opciones-servicios-corporativos';
+                    container.innerHTML =
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 01.pdf">Introducción</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 02.pdf">Clase 02</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 03.pdf">Clase 03</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 04.pdf">Clase 04</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 05.pdf">Clase 05</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 06.pdf">Clase 06</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 07.pdf">Clase 07</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 09.pdf">Clase 09</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 10.pdf">Clase 10</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 11.pdf">Clase 11</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 12.pdf">Clase 12</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 13.pdf">Clase 13</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/MC34 Mandos NeuHid Sesion 14.pdf">Clase 14</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/Calculo caudal aire comprimido.xlsx">Calculos</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="Mandos/3b1815bf-e760-4b36-b627-16ffb347e6ae.pdf">KALMAN</a>' +
+                        '</div>' +
+                        '<div class="curso">' +
+                        '<a href="https://www.youtube.com/watch?v=afJYbkIEezI&list=PL6dG0Yh_fftIzU4Td2yH_cdxX-gYqGkS4">Reducción Bloques</a>' +
+                        '</div>';
+                    document.body.appendChild(container);
+                }
+
+                return container;
+            }
+        });
+    </script>
+
+</body>
+
+</html>
